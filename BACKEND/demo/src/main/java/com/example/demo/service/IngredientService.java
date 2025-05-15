@@ -17,23 +17,29 @@ public class IngredientService {
         this.ingredientRepository = ingredientRepository;
     }
 
-    public List<Ingredient> getAllIngredients() {
-        return ingredientRepository.findAll();
-    }
-
+    //only admin should be able to access this
     public void insertIngredient(Ingredient ingredient) {
         ingredientRepository.save(ingredient);
     }
 
-    public void deleteIngredient(Ingredient ingredient) {
-        ingredientRepository.delete(ingredient);
+    public void deleteIngredientById(Integer id) {
+        Ingredient ingredient = findIngredientById(id); // optional check
+        ingredientRepository.deleteById(id);
     }
+
+
     public void updateIngredient(Ingredient ingredient) {
         ingredientRepository.save(ingredient);
     }
 
     public Ingredient findIngredientById(Integer id) {
         return ingredientRepository.findById(id).orElseThrow(()->new ResourceNotFoundException(id + "Not Found"));
+    }
+
+    //everyone should be able to access this
+
+    public List<Ingredient> getAllIngredients() {
+        return ingredientRepository.findAll();
     }
 
     public List<Ingredient> findIngredientByName(String name) {
@@ -50,12 +56,15 @@ public class IngredientService {
     public List<Ingredient> findIngredientByCarbs(double carbs) {
         return ingredientRepository.findByCarbs(carbs);
     }
+
     public List<Ingredient> findTopByProtein() {
         return ingredientRepository.findTopByProtein();
     }
+
     public List<Ingredient> findIngredientByExtremeCalories(){
         return ingredientRepository.findExtremeCalories();
     }
+
     public List<Ingredient> findIngredientByCalorieRange(Integer min, Integer max) {
         return ingredientRepository.findByCalorieRange(min, max);
     }

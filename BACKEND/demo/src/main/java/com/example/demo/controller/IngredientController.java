@@ -19,8 +19,10 @@ public class IngredientController {
     //know this are the ones for admin
 
     @PutMapping("/{id}")
-    public void updateIngredient(@PathVariable Ingredient update) {
-        ingredientService.updateIngredient(update);
+    public void updateIngredient(@PathVariable Integer id, @RequestBody Ingredient ingredient) {
+        ingredient.setId(id);
+        ingredientService.updateIngredient(ingredient);
+
     }
 
     @PostMapping
@@ -29,8 +31,8 @@ public class IngredientController {
     }
 
     @DeleteMapping
-    public void deleteIngredient(@RequestBody Ingredient ingredient) {
-        ingredientService.deleteIngredient(ingredient);
+    public void deleteIngredientById(@RequestParam Integer id) {
+        ingredientService.deleteIngredientById(id);
     }
 
     @GetMapping("/{id}")
