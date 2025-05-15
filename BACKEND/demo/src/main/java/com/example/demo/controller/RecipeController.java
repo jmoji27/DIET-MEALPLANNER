@@ -20,8 +20,8 @@ public class RecipeController {
         recipeService.insertRecipe(recipe);
     }
 
-    @DeleteMapping
-    public void deleteRecipeById(@RequestParam  Integer id){
+    @DeleteMapping("/{id}")
+    public void deleteRecipeById(@PathVariable  Integer id){
         recipeService.deleteRecipeById(id);
     }
 

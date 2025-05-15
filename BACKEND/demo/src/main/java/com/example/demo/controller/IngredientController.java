@@ -78,6 +78,11 @@ public class IngredientController {
         return ingredientService.findIngredientByCalorieRange(min, max);
     }
 
+    @GetMapping("/top-protein")
+    public List<Ingredient> getTopProtein() {
+        return ingredientService.findTopByProtein();
+    }
+
 
 
 

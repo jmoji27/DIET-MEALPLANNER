@@ -1,0 +1,37 @@
+@baseUrl = http://localhost:8080/api/diet
+
+### Insert diet
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "dName": "keto",
+  "goal": "low carb, weight loss",
+  "description": "A low carbohydrate, high-fat diet."
+}
+
+### Update diet
+PUT {{baseUrl}}
+Content-Type: application/json
+
+{
+  "did": 2,
+  "dName": "Updated  Vegetarian",
+  "goal": "low carb,weight loss",
+  "description": "Updated description."
+}
+
+### Get all diets
+GET {{baseUrl}}
+
+### Get by name
+GET {{baseUrl}}/name/Keto
+
+### Get by goal
+GET {{baseUrl}}/goal/low carb
+
+### Get by ID
+GET {{baseUrl}}/id/1
+
+### Delete by ID
+DELETE {{baseUrl}}/1
