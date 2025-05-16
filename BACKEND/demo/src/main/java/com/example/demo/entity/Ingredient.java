@@ -12,6 +12,8 @@ public class Ingredient{
     private int carbs;
     private int protein;
 
+    private String tag;
+
 
 
     public Ingredient() {
@@ -63,6 +65,14 @@ public class Ingredient{
 
     public void setProtein(int protein) {
         this.protein = protein;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 }
 

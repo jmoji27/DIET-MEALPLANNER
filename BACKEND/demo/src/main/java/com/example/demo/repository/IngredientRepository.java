@@ -26,6 +26,12 @@ public interface IngredientRepository extends JpaRepository<Ingredient, Integer>
     @Query(value = "SELECT * FROM ingredient WHERE LOWER(name) LIKE LOWER(CONCAT('%', :searchName, '%'))", nativeQuery = true)
     List<Ingredient> findByName(@Param("searchName") String searchName);
 
+    @Query(value = "SELECT * FROM ingredient WHERE tags ILIKE %:tag%", nativeQuery = true)
+    List<Ingredient> findByTag(@Param("tag") String tag);
+
+
+
+
 
 
 

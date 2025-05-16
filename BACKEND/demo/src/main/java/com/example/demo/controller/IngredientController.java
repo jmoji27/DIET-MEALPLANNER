@@ -83,6 +83,11 @@ public class IngredientController {
         return ingredientService.findTopByProtein();
     }
 
+    @GetMapping("/tag/{tag}")
+    public List<Ingredient> getIngredientByTag(@PathVariable String tag) {
+        return ingredientService.findIngredientsByTag(tag);
+    }
+
 
 
 

@@ -68,6 +68,9 @@ public class IngredientService {
     public List<Ingredient> findIngredientByCalorieRange(Integer min, Integer max) {
         return ingredientRepository.findByCalorieRange(min, max);
     }
+    public List<Ingredient> findIngredientsByTag(String tag) {
+        return ingredientRepository.findByTag(tag);
+    }
 
 
 

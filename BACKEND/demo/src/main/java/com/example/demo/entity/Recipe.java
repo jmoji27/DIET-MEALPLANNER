@@ -15,6 +15,9 @@ public class Recipe{
     @Column(name="DIET_ID")
     private Integer dietId;
 
+    @Column(name="INSTRUCTIONS")
+    private String instructions;
+
     public Recipe() {
     }
 
@@ -41,6 +44,9 @@ public class Recipe{
     public void setDietId(Integer dietId) {
         this.dietId = dietId;
     }
+
+    public String getInstructions() { return instructions; }
+    public void setInstructions(String instructions) { this.instructions = instructions; }
 
 
 }

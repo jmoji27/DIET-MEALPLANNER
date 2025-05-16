@@ -5,7 +5,7 @@ POST {{baseUrl}}
 Content-Type: application/json
 
 {
-  "dName": "keto",
+  "dName": "paleo",
   "goal": "low carb, weight loss",
   "description": "A low carbohydrate, high-fat diet."
 }
@@ -31,7 +31,7 @@ GET {{baseUrl}}/name/Keto
 GET {{baseUrl}}/goal/low carb
 
 ### Get by ID
-GET {{baseUrl}}/id/1
+GET {{baseUrl}}/id/3
 
 ### Delete by ID
 DELETE {{baseUrl}}/1
