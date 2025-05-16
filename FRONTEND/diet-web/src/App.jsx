@@ -1,4 +1,4 @@
-import { div } from "motion/react-client";
+
 import React from "react";
 import NavMain from "./components/navbar/NavMain";
 
