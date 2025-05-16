@@ -1,6 +1,7 @@
 package com.example.demo.repository;
 
 import com.example.demo.entity.Contains;
+import com.example.demo.entity.Recipe;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,8 +16,21 @@ public interface ContainsRepository extends JpaRepository<Contains, Integer> {
     List<Contains> findContainsByMinKcal(@Param("minKcal") Integer minKcal);
 
     //get by recipe id
-    @Query(value="SELECT * FROM contains WHERE rid = :recipeId", nativeQuery = true)
-    List<Contains> findByRecipeId(@Param("recipeId") Integer recipeId);
+    @Query(value = "SELECT r.* FROM recipe r JOIN contains c ON r.id = c.rid WHERE c.igid = :ingredientId", nativeQuery = true)
+    List<Recipe> findRecipesByIngredientId(@Param("ingredientId") Integer ingredientId);
+
+    //get by recipe name
+    @Query(value="Select r.* FROM recipe r JOIN contains c ON r.id = c.rid JOIN ingredient i on c.igid = i.id WHERE i.name ILIKE %:ingredientName%", nativeQuery = true)
+    List<Recipe> findRecipesByIngredientName(@Param("ingredientName") String ingredientName);
+
+    //get ingredients from recipes
+    @Query(value = "SELECT i.*, c.amount, c.total_kcal FROM ingredient i JOIN contains c ON i.id = c.igid WHERE c.rid = :recipeId", nativeQuery = true)
+    List<Object[]> findIngredientsByRecipeId(@Param("recipeId") Integer recipeId);
+
+    //get ingredients
+
+
+
 
 
 
