@@ -3,14 +3,14 @@ package com.example.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.entity.User;
-import com.example.demo.repo.UserRepository;
+import com.example.demo.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "http://localhost:5173") // Allow frontend access
+//@CrossOrigin(origins = "http://localhost:5173") // Allow frontend access
 public class UserController {
 
     @Autowired
