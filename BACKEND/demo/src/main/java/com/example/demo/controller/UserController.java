@@ -13,6 +13,7 @@ import java.util.Optional;
 //@CrossOrigin(origins = "http://localhost:5173") // Allow frontend access
 public class UserController {
 
+
     @Autowired
     private UserRepository userRepository;
 
@@ -35,7 +36,9 @@ public class UserController {
     // Get All Users (Admin Only)
     @GetMapping
     public List<User> getAllUsers() {
+
         return userRepository.findAll();
+
     }
 
     //Update User

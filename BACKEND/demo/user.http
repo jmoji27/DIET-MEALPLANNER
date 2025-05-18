@@ -1,54 +1,30 @@
-@baseUrl = http://localhost:8080/api/users
-
-
-###
-
+http://localhost:8081/api/users
 
 ###
-# curl -X POST http://localhost:8080/api/users/register
-#  -H "Content-Type: application/json"
-#  -d '{"username": "thuong123", "password": "mypassword", "role": "USER"}'
-POST http://localhost:8080/api/users/register
+POST http://localhost:8081/api/users/register
 Content-Type: application/json
 
 {
-  "username": "thuong123",
-  "password": "mypassword",
+  "username": "newuser",
+  "password": "newpassword",
   "role": "USER"
 }
 
 ###
-
-# curl http://localhost:8080/api/users/1
-GET http://localhost:8080/api/users/1
-
-###
-
-# curl http://localhost:8080/api/users
 GET http://localhost:8080/api/users
 
 ###
+GET http://localhost:8081/api/users/1
 
-{
-  "username": "newUsername",
-  "role": "ADMIN"
-}
 ###
-
-# curl -X PUT http://localhost:8080/api/users/1
-#  -H "Content-Type: application/json"
-#  -d '{"username": "newUsername", "role": "ADMIN"}'
-PUT http://localhost:8080/api/users/1
+PUT http://localhost:8081/api/users/1
 Content-Type: application/json
 
-{"username": "newUsername", "role": "ADMIN"}
+{
+  "username": "updatedUsername",
+  "role": "ADMIN"
+}
 
 ###
-
-# curl -X DELETE http://localhost:8080/api/users/1
-DELETE http://localhost:8080/api/users/1
-
-###
-
-
+DELETE http://localhost:8081/api/users/1
 

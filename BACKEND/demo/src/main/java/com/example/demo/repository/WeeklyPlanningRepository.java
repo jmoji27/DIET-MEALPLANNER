@@ -15,5 +15,5 @@ import java.util.List;
 
 @Repository
 public interface WeeklyPlanningRepository extends JpaRepository<WeeklyPlanning, Integer> {
-    List<WeeklyPlanning> findByUser_Uid(Integer userId); // uses nested field in entity
+    List<WeeklyPlanning> findByUser_Id(Integer id); // uses nested field in entity
 }

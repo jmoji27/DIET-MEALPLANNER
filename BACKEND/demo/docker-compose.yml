@@ -12,11 +12,12 @@ services:
       - ${PWD}/src/main/resources/data:/data
 
 
+
   backend:
     build: .
     container_name: diet-backend
     ports:
-      - "8080:8080"
+      - "8080:8081"
     depends_on:
       - postgres
     environment:

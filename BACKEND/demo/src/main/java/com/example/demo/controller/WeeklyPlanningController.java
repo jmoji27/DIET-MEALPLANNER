@@ -60,4 +60,5 @@ public class WeeklyPlanningController {
             return ResponseEntity.status(400).body("Error: " + e.getMessage());
         }
     }
+
 }

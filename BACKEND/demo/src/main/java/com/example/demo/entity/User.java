@@ -3,7 +3,7 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 
 @Entity
-//@Table(name = "users")
+@Table(name = "app_user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,24 +12,9 @@ public class User {
     private String username;
     private String password;
 
-    public String getMealType() {
-        return mealType;
-    }
 
-    public void setMealType(String mealType) {
-        this.mealType = mealType;
-    }
 
-    public String getMealRecipe() {
-        return mealRecipe;
-    }
 
-    public void setMealRecipe(String mealRecipe) {
-        this.mealRecipe = mealRecipe;
-    }
-
-    private String mealType;
-    private String mealRecipe;
 
     @Enumerated(EnumType.STRING)
     private Role role;

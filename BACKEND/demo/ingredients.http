@@ -1,8 +1,8 @@
 ### Get request
-GET http://localhost:8080/api/v1/Ingredient;
+GET http://localhost:8080/api/ingredient
 
 ###
-POST http://localhost:8080/api/v1/Ingredient;
+POST http://localhost:8081/api/ingredient;
 Content-Type: application/json
 
 {

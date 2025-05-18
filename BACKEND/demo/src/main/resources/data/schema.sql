@@ -43,18 +43,18 @@ AS
     ENUM('ROLE_USER', 'ROLE_ADMIN');
 
 CREATE TABLE app_user (
-                          id BIGSERIAL PRIMARY KEY,
+                          id SERIAL PRIMARY KEY,
                           username VARCHAR(100) NOT NULL UNIQUE,
                           password VARCHAR(100) NOT NULL,
                           role role NOT NULL
 );
 
 CREATE TABLE weekly_planning (
-                                 plan_id BIGSERIAL PRIMARY KEY,
-                                 user_id BIGINT REFERENCES app_user(id) ON DELETE CASCADE,
+                                 plan_id SERIAL PRIMARY KEY,
+                                 user_id INTEGER REFERENCES app_user(id) ON DELETE CASCADE,
                                  recipe_id INTEGER REFERENCES recipe(rid) ON DELETE CASCADE,
-                                 meal_type VARCHAR(50),
-                                 date DATE
+                                 meal_type VARCHAR(50) NOT NULL,
+                                 date DATE NOT NULL
 );
 
 
