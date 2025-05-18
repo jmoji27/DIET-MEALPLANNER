@@ -1,77 +1,72 @@
 package com.example.demo.service;
-import java.util.List;
 
-import com.example.demo.ResourceNotFoundException;
+import com.example.demo.dto.IngredientDTO;
 import com.example.demo.entity.Ingredient;
 import com.example.demo.repository.IngredientRepository;
-
-
-
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class IngredientService {
-    private  IngredientRepository ingredientRepository;
+
+    private final IngredientRepository ingredientRepository;
 
     public IngredientService(IngredientRepository ingredientRepository) {
         this.ingredientRepository = ingredientRepository;
     }
 
-    //only admin should be able to access this
-    public void insertIngredient(Ingredient ingredient) {
-        ingredientRepository.save(ingredient);
+    public IngredientDTO insertIngredient(IngredientDTO dto) {
+        Ingredient ingredient = mapDTOToEntity(dto);
+        Ingredient saved = ingredientRepository.save(ingredient);
+        return mapEntityToDTO(saved);
+    }
+
+    public IngredientDTO updateIngredient(IngredientDTO dto) {
+        Ingredient ingredient = mapDTOToEntity(dto);
+        Ingredient updated = ingredientRepository.save(ingredient);
+        return mapEntityToDTO(updated);
     }
 
     public void deleteIngredientById(Integer id) {
-        Ingredient ingredient = findIngredientById(id); // optional check
         ingredientRepository.deleteById(id);
     }
 
-
-    public void updateIngredient(Ingredient ingredient) {
-        ingredientRepository.save(ingredient);
+    public IngredientDTO getIngredientById(Integer id) {
+        Ingredient ingredient = ingredientRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Ingredient not found"));
+        return mapEntityToDTO(ingredient);
     }
 
-    public Ingredient findIngredientById(Integer id) {
-        return ingredientRepository.findById(id).orElseThrow(()->new ResourceNotFoundException(id + "Not Found"));
+    public List<IngredientDTO> getAllIngredients() {
+        return ingredientRepository.findAll()
+                .stream()
+                .map(this::mapEntityToDTO)
+                .collect(Collectors.toList());
     }
 
-    //everyone should be able to access this
-
-    public List<Ingredient> getAllIngredients() {
-        return ingredientRepository.findAll();
+    private Ingredient mapDTOToEntity(IngredientDTO dto) {
+        Ingredient ingredient = new Ingredient();
+        if (dto.getId() != null) ingredient.setId(dto.getId());
+        ingredient.setName(dto.getName());
+        ingredient.setCalories(dto.getCalories());
+        ingredient.setFat(dto.getFat());
+        ingredient.setCarbs(dto.getCarbs());
+        ingredient.setProtein(dto.getProtein());
+        ingredient.setTag(dto.getTag());
+        return ingredient;
     }
 
-    public List<Ingredient> findIngredientByName(String name) {
-        List<Ingredient> ingredients =  ingredientRepository.findByName(name);
-        if(ingredients.isEmpty()) {
-            throw new ResourceNotFoundException("Ingredient with name " +  name + " not found");
-        }
-        return ingredients;
+    private IngredientDTO mapEntityToDTO(Ingredient ingredient) {
+        return new IngredientDTO(
+                ingredient.getId(),
+                ingredient.getName(),
+                ingredient.getCalories(),
+                ingredient.getFat(),
+                ingredient.getCarbs(),
+                ingredient.getProtein(),
+                ingredient.getTag()
+        );
     }
-
-    public List<Ingredient> findIngredientByCalories(double calories) {
-        return ingredientRepository.findByCalories(calories);
-    }
-    public List<Ingredient> findIngredientByCarbs(double carbs) {
-        return ingredientRepository.findByCarbs(carbs);
-    }
-
-    public List<Ingredient> findTopByProtein() {
-        return ingredientRepository.findTopByProtein();
-    }
-
-    public List<Ingredient> findIngredientByExtremeCalories(){
-        return ingredientRepository.findExtremeCalories();
-    }
-
-    public List<Ingredient> findIngredientByCalorieRange(Integer min, Integer max) {
-        return ingredientRepository.findByCalorieRange(min, max);
-    }
-    public List<Ingredient> findIngredientsByTag(String tag) {
-        return ingredientRepository.findByTag(tag);
-    }
-
-
-
 }

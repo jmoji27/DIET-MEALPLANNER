@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.DietDTO;
 import com.example.demo.entity.Diet;
 import com.example.demo.service.DietService;
 import org.springframework.web.bind.annotation.*;
@@ -9,47 +10,46 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/diet")
 public class DietController {
+
     private final DietService dietService;
+
     public DietController(DietService dietService) {
         this.dietService = dietService;
     }
 
-   //methods for admin only
     @PostMapping
-    public void InsertDiet(@RequestBody Diet diet){
-         dietService.insertDiet(diet);
+    public DietDTO insertDiet(@RequestBody DietDTO diet) {
+        return dietService.insertDiet(diet);
     }
+
     @PutMapping("/{id}")
-    public void updateDiet(@PathVariable Integer id, @RequestBody Diet diet) {
-        diet.setDid(id); // force ID from URL path into the object
-        dietService.updateDiet(diet);
+    public DietDTO updateDiet(@PathVariable Integer id, @RequestBody DietDTO diet) {
+        diet.setDid(id); // force ID from path
+        return dietService.updateDiet(diet);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteDietById(@PathVariable("id") Integer  id){
+    public void deleteDietById(@PathVariable Integer id) {
         dietService.deleteDietById(id);
     }
 
-    //for all users
     @GetMapping("/name/{name}")
-        public List<Diet> getDietByName(@PathVariable String name){
-            return dietService.getDietByName(name);
-        }
-
-
+    public List<DietDTO> getDietByName(@PathVariable String name) {
+        return dietService.getDietByName(name);
+    }
 
     @GetMapping
-    public List<Diet> getAllDiets(){
+    public List<DietDTO> getAllDiets() {
         return dietService.getAllDiet();
     }
 
     @GetMapping("/goal/{goal}")
-    public List<Diet> getDietByGoal(@PathVariable  String goal){
+    public List<DietDTO> getDietByGoal(@PathVariable String goal) {
         return dietService.getDietByGoal(goal);
     }
 
     @GetMapping("/id/{id}")
-    public Diet getDietById(@PathVariable Integer id){
+    public DietDTO getDietById(@PathVariable Integer id) {
         return dietService.getDietById(id);
     }
 }

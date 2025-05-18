@@ -1,0 +1,49 @@
+### insert recipes
+POST http://localhost:8080/contains
+Content-Type: application/json
+
+{
+  "recipeId": 2,
+  "ingredientId": 2,
+  "amount": 150.0
+}
+
+### update recipes
+PUT http://localhost:8080/contains
+Content-Type: application/json
+
+{
+  "recipeId": 2,
+  "ingredientId": 2,
+  "amount": 200.0
+}
+
+###Delete by id
+DELETE http://localhost:8080/contains/5
+
+###Get all
+GET http://localhost:8080/contains
+
+###Get by composite id
+GET http://localhost:8080/contains/1/2
+
+###Get contains by max cal
+GET http://localhost:8080/contains/max-cal/300
+
+
+###get contains by min cal
+GET http://localhost:8080/contains/min-cal/500
+
+
+###get recipes by ingredient id
+GET http://localhost:8080/contains/ingredient/4
+
+
+###get recipes by ingredient name
+GET http://localhost:8080/contains/ingredient-name/sugar
+
+
+###get ingredients by recipes idwith dto
+GET http://localhost:8080/contains/recipe/3
+
+

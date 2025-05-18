@@ -38,7 +38,7 @@ public class Contains {
 
     }
 
-    private void calculateTotalKcal() {
+    public void calculateTotalKcal() {
         // Assuming calories is per 100g or per unit depending on how you manage it
         this.totalKcal = (ingredient.getCalories() * amount) / 100.0;
     }
