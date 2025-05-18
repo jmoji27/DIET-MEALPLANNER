@@ -1,16 +1,18 @@
 package com.example.demo.entity;
 
+import java.time.LocalDate;
+
 public class WeeklyPlanRequest {
-    private Long userId;
+    private Integer userId;
     private Integer recipeId;
     private String mealType;
-    private String date;
+    private LocalDate date;
 
-    public Long getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
@@ -30,11 +32,11 @@ public class WeeklyPlanRequest {
         this.mealType = mealType;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 }

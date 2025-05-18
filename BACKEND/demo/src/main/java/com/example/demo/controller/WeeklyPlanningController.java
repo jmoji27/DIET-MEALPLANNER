@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,10 +37,10 @@ public class WeeklyPlanningController {
     @PostMapping("/add")
     public ResponseEntity<String> addPlan(@RequestBody WeeklyPlanRequest request) {
         try {
-            Long userId = request.getUserId();
+            Integer userId = request.getUserId();
             Integer recipeId = request.getRecipeId();
             String mealType = request.getMealType();
-            String date = request.getDate();
+            LocalDate date = request.getDate();
 
             User user = userRepo.findById(userId)
                     .orElseThrow(() -> new RuntimeException("User not found"));

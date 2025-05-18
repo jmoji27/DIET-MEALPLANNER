@@ -7,7 +7,7 @@ const Footer = () => {
         <p style={styles.text}><strong>Dietify</strong> — Your smart meal partner 🍏</p>
         <p style={styles.text}>© {new Date().getFullYear()} Dietify. All rights reserved.</p>
         <p style={styles.text}>
-          Contact us: <a href="mailto:info@dietify.com" style={styles.link}>info@dietify.com</a> | 📞 +1 234 567 8901
+          Contact us: <a href="mailto:thuong@ogr.eskisehir.edu.tr" style={styles.link}>thuong@ogr.eskisehir.edu.tr</a> | 📞 +1 234 567 8901 
         </p>
       </div>
     </footer>

@@ -23,6 +23,15 @@ public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
     """, nativeQuery = true)
     List<Recipe> findRecipesByDietName(@Param("dietName") String dietName);
 
+    @Query(value = "SELECT * FROM recipe WHERE diet_id = :dietId", nativeQuery = true)
+    List<Recipe> findByDId(@Param("dietId") Integer dietId);
+
+
+
+//    @Query(value = "SELECT * FROM recipe WHERE DIET_ID = :dietId", nativeQuery = true)
+//    List<Recipe> findByDietId(@Param("dietId") Integer dietId);
+
+
 
 
 }

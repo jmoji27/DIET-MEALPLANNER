@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface WeeklyPlanningRepository extends JpaRepository<WeeklyPlanning, Long> {
-    List<WeeklyPlanning> findByUser_Uid(Long userId); // uses nested field in entity
+public interface WeeklyPlanningRepository extends JpaRepository<WeeklyPlanning, Integer> {
+    List<WeeklyPlanning> findByUser_Uid(Integer userId); // uses nested field in entity
 }

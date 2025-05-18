@@ -1,12 +1,12 @@
 
-// import React from "react";
 import NavMain from "./components/navbar/NavMain";
 import LoginForm from "./components/Login/LoginForm";
 import React, { useState } from "react";
 import MealPlan from "./components/MealPlanning/MealPlan";
 import Footer from "./components/FooterElement/Footer";
-import UserMeal from "./components/Users/UserMeal";
-
+import UserMeal from "./components/User/UserMeal";
+import IngredientForm from "./components/Admin/IngredientForm";
+import MealPlanner from "./components/MealPlanning/MealPlanner";
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
 
@@ -32,6 +32,8 @@ const App = () => {
         <MealPlan /> 
       </div>
       <UserMeal/>
+      <IngredientForm/>
+      <MealPlanner/>
 
 
     <Footer />

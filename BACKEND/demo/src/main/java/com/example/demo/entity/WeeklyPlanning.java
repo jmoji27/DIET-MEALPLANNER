@@ -1,6 +1,8 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "weekly_planning")
@@ -9,14 +11,14 @@ public class WeeklyPlanning {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "plan_id") // Optional: match column name in DB
-    private Long planId;
+    private Integer planId;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @Column(nullable = false)
-    private String date;
+    private LocalDate date;
 
     @Column(name = "meal_type", nullable = false)
     private String mealType;
@@ -26,11 +28,11 @@ public class WeeklyPlanning {
     private Recipe recipe;
 
     // --- Getters and Setters ---
-    public Long getPlanId() {
+    public Integer getPlanId() {
         return planId;
     }
 
-    public void setPlanId(Long planId) {
+    public void setPlanId(Integer planId) {
         this.planId = planId;
     }
 
@@ -42,11 +44,11 @@ public class WeeklyPlanning {
         this.user = user;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
