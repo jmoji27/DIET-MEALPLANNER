@@ -54,7 +54,7 @@ const IngredientForm = () => {
           required
         />
          <input
-          type="text"
+          type="number"
           placeholder="Calories"
         //   value={title}
         //   onChange={(e) => setTitle(e.target.value)}
@@ -62,7 +62,7 @@ const IngredientForm = () => {
           required
         />
         <input
-          type="text"
+          type="number"
           placeholder="Fat"
         //   value={content}
         //   onChange={(e) => setContent(e.target.value)}
@@ -70,14 +70,14 @@ const IngredientForm = () => {
           required
         />
         <input
-          type="text"
+          type="number"
           placeholder="Protein"
         //   value={image_url}
         //   onChange={(e) => setImage_url(e.target.value)}
           className="w-full p-2 border rounded mb-2"
         />
          <input
-          type="text"
+          type="number"
           placeholder="Carbs"
         //   value={title}
         //   onChange={(e) => setTitle(e.target.value)}
