@@ -18,7 +18,7 @@ const NavMain = ({ onLoginClick }) => {
        bg-opacity-60 text-white 
        shadow-lg z-10"
     >
-      <ul className="flex gap-8 text-xl">
+      <ul className="flex gap-8 text-xl font-bold">
         {listItems.map((item) => (
           <li key={item.id} className="relative group cursor-pointer">
             <a href={`#${item.id}`}>{item.name}</a>
@@ -30,7 +30,7 @@ const NavMain = ({ onLoginClick }) => {
         className="bg-gradient-to-r 
         from-blue-500 to-green-400 py-1 px-6
         rounded-3xl shadow-2xl text-white text-lg
-        font-semibold hover:from-blue-600
+        font-bold hover:from-blue-600
         hover:to-green-500 hover:shadow-green-500
         shadow-blue-500"
       >
