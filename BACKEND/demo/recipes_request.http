@@ -5,19 +5,19 @@ Accept: application/json
 ###
 
 ### Get recipe by ID
-GET http://localhost:8080/api/v1/recipe/id/3
+GET http://localhost:8080/api/v1/recipe/id/340
 Accept: application/json
 
 ###
 
 ### Get recipe by name
-GET http://localhost:8080/api/v1/recipe/name/Quinoa Bowl
+GET http://localhost:8080/api/v1/recipe/name/lentil
 Accept: application/json
 
 ###
 
 ### Get recipe(s) by diet ID
-GET http://localhost:8080/api/v1/recipe/diet-id/5
+GET http://localhost:8080/api/v1/recipe/diet-id/3
 Accept: application/json
 
 ###

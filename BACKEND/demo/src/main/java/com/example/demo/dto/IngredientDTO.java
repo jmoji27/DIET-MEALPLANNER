@@ -1,10 +1,6 @@
-package com.example.demo.entity;
-import jakarta.persistence. *;
+package com.example.demo.dto;
 
-@Entity
-public class Ingredient{
-    @Id 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class IngredientDTO {
     private Integer id;
     private String name;
     private Integer calories;
@@ -14,9 +10,19 @@ public class Ingredient{
 
     private String tag;
 
+    public IngredientDTO() {}
 
-
-    public Ingredient() {
+    public IngredientDTO(Integer id, String name, Integer calories,
+    Float fat,
+    Float carbs,
+    Float protein, String tag) {
+        this.id = id;
+        this.name = name;
+        this.calories = calories;
+        this.fat = fat;
+        this.carbs = carbs;
+        this.protein = protein;
+        this.tag = tag;
     }
 
     public Integer getId() {
@@ -34,6 +40,7 @@ public class Ingredient{
     public void setName(String name) {
         this.name = name;
     }
+
 
     public Integer getCalories() {
         return calories;
@@ -75,5 +82,3 @@ public class Ingredient{
         this.tag = tag;
     }
 }
-
-

@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import com.example.demo.dto.IngredientWithKcalDTO;
 import com.example.demo.entity.Contains;
 import com.example.demo.entity.Recipe;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -25,9 +26,13 @@ public interface ContainsRepository extends JpaRepository<Contains, Integer> {
 
     //get ingredients from recipes
     @Query(value = "SELECT i.*, c.amount, c.total_kcal FROM ingredient i JOIN contains c ON i.id = c.igid WHERE c.rid = :recipeId", nativeQuery = true)
-    List<Object[]> findIngredientsByRecipeId(@Param("recipeId") Integer recipeId);
+    List<IngredientWithKcalDTO> findIngredientsByRecipeId(@Param("recipeId") Integer recipeId);
 
-    //get ingredients
+    //get ingredients all of em
+    @Query(value="SELECT * FROM contains WHERE rid = :rid AND igid = :igid", nativeQuery = true)
+    Contains findByCompositeId(@Param("rid") Integer rid, @Param("igid") Integer igid);
+
+
 
 
 

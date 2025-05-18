@@ -1,77 +1,66 @@
 package com.example.demo.service;
 
-import com.example.demo.ResourceNotFoundException;
+import com.example.demo.dto.RecipeDTO;
 import com.example.demo.entity.Recipe;
 import com.example.demo.repository.RecipeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
-
-
 public class RecipeService {
-    private  RecipeRepository recipeRepository;
+
+    private final RecipeRepository recipeRepository;
 
     public RecipeService(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
     }
 
+    public RecipeDTO insertRecipe(RecipeDTO dto) {
+        Recipe recipe = mapDTOToEntity(dto);
+        Recipe saved = recipeRepository.save(recipe);
+        return mapEntityToDTO(saved);
+    }
 
-    //methods I think only the admin should be
-    //able to use
-    public void insertRecipe(Recipe recipe) {
-        recipeRepository.save(recipe);
+    public RecipeDTO updateRecipe(RecipeDTO dto) {
+        Recipe recipe = mapDTOToEntity(dto);
+        Recipe updated = recipeRepository.save(recipe);
+        return mapEntityToDTO(updated);
     }
 
     public void deleteRecipeById(Integer id) {
-        Recipe recipe = findRecipeById(id);
-        recipeRepository.delete(recipe);
+        recipeRepository.deleteById(id);
     }
 
-    public void updateRecipe(Recipe recipe) {
-        recipeRepository.save(recipe);
+    public RecipeDTO getRecipeById(Integer id) {
+        Recipe recipe = recipeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Recipe not found"));
+        return mapEntityToDTO(recipe);
     }
 
-    public Recipe findRecipeById(Integer id) {
-        return recipeRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Recipe with ID " + id + " not found"));
+    public List<RecipeDTO> getAllRecipes() {
+        return recipeRepository.findAll()
+                .stream()
+                .map(this::mapEntityToDTO)
+                .collect(Collectors.toList());
     }
 
-
-    //General Methods
-
-    public List<Recipe> findRecipesByDietName(String name) {
-
-        List<Recipe> recipes = recipeRepository.findRecipesByDietName(name);
-        if(recipes.isEmpty()){
-            throw new ResourceNotFoundException("Recipe with name " + name + " not found");
-        }
-        return recipes;
-
-    }
-
-
-    public List<Recipe> getAllRecipes() {
-        return recipeRepository.findAll();
-    }
-
-
-    public List<Recipe> findRecipesByName(String name) {
-        List<Recipe> recipes = recipeRepository.findByName(name);
-        if(recipes.isEmpty()){
-            throw new ResourceNotFoundException("Recipe with name " + name + " not found");
-        }
-        return recipes;
-    }
-
-    public Recipe findRecipeByDietId(Integer dietId) {
-        Recipe recipe =  recipeRepository.findByDietId(dietId);
-        if (recipe == null) {
-            throw new ResourceNotFoundException("Recipe with id " + dietId + " not found");
-        }
+    private Recipe mapDTOToEntity(RecipeDTO dto) {
+        Recipe recipe = new Recipe();
+        if (dto.getId() != null) recipe.setId(dto.getId());
+        recipe.setName(dto.getName());
+        recipe.setDietId(dto.getDietId());
+        recipe.setInstructions(dto.getInstructions());
         return recipe;
     }
 
-
+    private RecipeDTO mapEntityToDTO(Recipe recipe) {
+        return new RecipeDTO(
+                recipe.getId(),
+                recipe.getName(),
+                recipe.getDietId(),
+                recipe.getInstructions()
+        );
+    }
 }

@@ -19,7 +19,7 @@ public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
     SELECT r.*
     FROM recipe r
     JOIN diet d ON r.DIET_ID = d.DID
-    WHERE LOWER(d.NAME) LIKE LOWER(CONCAT('%', :dietName, '%'))
+    WHERE LOWER(d.dName) LIKE LOWER(CONCAT('%', :dietName, '%'))
     """, nativeQuery = true)
     List<Recipe> findRecipesByDietName(@Param("dietName") String dietName);
 

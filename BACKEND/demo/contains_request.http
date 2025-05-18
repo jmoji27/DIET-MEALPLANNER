@@ -1,0 +1,43 @@
+### Insert contains
+POST http://localhost:8080/api/v1/contains
+Content-Type: application/json
+
+{
+  "recipeId": 2,
+  "ingredientId": 2,
+  "amount": 150.0
+}
+
+### Update contains
+PUT http://localhost:8080/api/v1/contains
+Content-Type: application/json
+
+{
+  "recipeId": 2,
+  "ingredientId": 2,
+  "amount": 200.0
+}
+
+### Delete by composite id (not by single id unless you have a surrogate key in your DB)
+DELETE http://localhost:8080/api/v1/contains/1/2
+
+### Get all
+GET http://localhost:8080/api/v1/contains
+
+### Get by composite id
+GET http://localhost:8080/api/v1/contains/1/2
+
+### Get contains by max cal
+GET http://localhost:8080/api/v1/contains/max-cal/300
+
+### Get contains by min cal
+GET http://localhost:8080/api/v1/contains/min-cal/20
+
+### Get recipes by ingredient id
+GET http://localhost:8080/api/v1/contains/ingredient/4
+
+### Get recipes by ingredient name
+GET http://localhost:8080/api/v1/contains/ingredient-name/lentil
+
+### Get ingredients by recipe id (DTO)
+GET http://localhost:8080/api/v1/contains/recipe/3
