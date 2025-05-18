@@ -7,7 +7,7 @@ const listItems = [
   { name: "Meal Planning", id: "mealplanning" },
 ];
 
-const NavMain = () => {
+const NavMain = ({ onLoginClick }) => {
   return (
     <div
       className="fixed bg-black flex 
@@ -26,7 +26,7 @@ const NavMain = () => {
           </li>
         ))}
       </ul>
-      <button
+      <button  onClick={onLoginClick} 
         className="bg-gradient-to-r 
         from-blue-500 to-green-400 py-1 px-6
         rounded-3xl shadow-2xl text-white text-lg
