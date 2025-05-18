@@ -5,12 +5,14 @@ import com.example.demo.dto.IngredientWithKcalDTO;
 import com.example.demo.entity.Contains;
 import com.example.demo.entity.Recipe;
 import com.example.demo.service.ContainsService;
+import jakarta.annotation.PostConstruct;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/contains")
+@RequestMapping("/api/v1/contains")
 public class ContainsController {
     private final ContainsService containsService;
 
@@ -18,10 +20,25 @@ public class ContainsController {
         this.containsService = containsService;
     }
 
+    // Temporary mock for testing
+    @GetMapping("/test")
+    public ResponseEntity<List<String>> getFakeContains() {
+        return ResponseEntity.ok(List.of("works", "just", "fine"));
+    }
+
+
+
+
+    @PostConstruct
+    public void init() {
+        System.out.println("✅ ContainsController loaded!");
+    }
+
+
     //Admins only methods
-    @DeleteMapping("/{id}")
-    public void deleteContainsById(@PathVariable Integer  id) {
-        containsService.deleteContainsById(id);
+    @DeleteMapping("/{rid}/{igid}")
+    public void deleteContainsById(@PathVariable Integer  rid, @PathVariable Integer igid) {
+        containsService.deleteContainsById(rid, igid);
     }
 
     @PostMapping
@@ -35,8 +52,10 @@ public class ContainsController {
     }
 
     //Every User
-    @RequestMapping
+    @GetMapping
     public List<ContainsDTO> getAllContains() {
+        System.out.println("📥 getAllContains called");
+
         return containsService.getAllContains();
     }
 

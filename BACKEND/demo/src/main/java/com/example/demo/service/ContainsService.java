@@ -5,6 +5,7 @@ import com.example.demo.ResourceNotFoundException;
 import com.example.demo.dto.ContainsDTO;
 import com.example.demo.dto.IngredientWithKcalDTO;
 import com.example.demo.entity.Contains;
+import com.example.demo.entity.ContainsId;
 import com.example.demo.entity.Ingredient;
 import com.example.demo.entity.Recipe;
 import com.example.demo.repository.ContainsRepository;
@@ -28,10 +29,16 @@ public class ContainsService {
     }
 
     //only should be accesed by admins
-    public void deleteContainsById(Integer id) {
-        Contains contains = containsRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Contains not found"));
-        containsRepository.delete(contains);
+    public void deleteContainsById(Integer recipeId, Integer ingredientId) {
+
+        Contains contains = containsRepository.findByCompositeId(recipeId, ingredientId);
+                if (contains == null) {
+                    throw new ResourceNotFoundException("contains not found");
+                }
+
+                 containsRepository.delete(contains);
     }
+
 
     public ContainsDTO insertContains(ContainsDTO containsDTO) {
         Contains contains = mapDTOToEntity(containsDTO);
