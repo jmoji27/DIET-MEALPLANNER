@@ -1,45 +1,39 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-
-const diets = [
-  { name: 'Keto', color: 'bg-red-400', path: '/diets/keto' },
-  { name: 'Vegan', color: 'bg-green-400', path: '/diets/vegan' },
-  { name: 'Low Carb', color: 'bg-blue-400', path: '/diets/low-carb' },
-  { name: 'Gluten-Free', color: 'bg-yellow-400', path: '/diets/gluten-free' },
-  { name: 'Vegetarian', color: 'bg-purple-400', path: '/diets/vegetarian' },
-  { name: 'Paleo', color: 'bg-pink-400', path: '/diets/paleo' },
-];
-
-const Bubble = ({ name, color, path }) => (
-  <Link
-    to={path}
-    className={`rounded-full w-24 h-24 md:w-28 md:h-28 flex items-center justify-center text-white font-semibold text-center shadow-md hover:scale-110 transition-transform duration-300 ${color}`}
-  >
-    {name}
-  </Link>
-);
+import React from "react";
+import { Link } from "react-router-dom";
 
 const HeroDiet = () => {
   return (
-    <div className="flex flex-col items-center gap-6">
-      {/* Top row: 2 buttons */}
-      <div className="flex gap-8">
-        <Bubble {...diets[0]} />
-        <Bubble {...diets[1]} />
-      </div>
+    <div className="w-full flex justify-center">
+  <div className="w-full max-w-md space-y-4">
+    {/* Title */}
+    <h2 className="text-white text-center text-5xl font-bold leading-snug">
+      Which of the following tags is<br />the closest to your diet goals?
+    </h2>
 
-      {/* Middle row: 3 buttons */}
-      <div className="flex gap-8">
-        <Bubble {...diets[2]} />
-        <Bubble {...diets[3]} />
-        <Bubble {...diets[4]} />
-      </div>
-
-      {/* Bottom row: 1 button */}
-      <div>
-        <Bubble {...diets[5]} />
-      </div>
+    {/* Buttons */}
+    <div className="grid grid-cols-2 gap-4">
+      <Link to="/keto">
+        <button className="btn btn-neutral w-full rounded-xl py-4 text-lg">Keto</button>
+      </Link>
+      <Link to="/lowcarb">
+        <button className="btn btn-primary w-full rounded-xl py-4 text-lg">Low Carb</button>
+      </Link>
+      <Link to="/glutenfree">
+        <button className="btn btn-secondary w-full rounded-xl py-4 text-lg">Gluten Free</button>
+      </Link>
+      <Link to="/paleo">
+        <button className="btn btn-accent w-full rounded-xl py-4 text-lg">Paleo</button>
+      </Link>
+      <Link to="/vegan">
+        <button className="btn btn-info w-full rounded-xl py-4 text-lg">Vegan</button>
+      </Link>
+      <Link to="/vegetarian">
+        <button className="btn btn-success w-full rounded-xl py-4 text-lg">Vegetarian</button>
+      </Link>
     </div>
+  </div>
+</div>
+
   );
 };
 

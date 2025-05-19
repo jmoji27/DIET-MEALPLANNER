@@ -1,11 +1,12 @@
 import React from 'react';
-import HeroDiet from './HeroDiet';
 import { Link } from 'react-router-dom';
+import HeroDiet from './HeroDiet';
 
 
 const HeroMain = () => {
   return (
     <div
+    id="about"
       className="min-h-screen bg-cover bg-center flex items-center"
       style={{
         backgroundImage:
@@ -19,17 +20,18 @@ const HeroMain = () => {
       <div className="relative z-10 flex w-full justify-between px-8 lg:px-20 items-center">
         {/* Text on the left */}
         <div className="text-white max-w-lg">
-          <h1 className="text-5xl font-bold mb-6">Hello there</h1>
-          <p className="mb-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-            quasi. In deleniti eaque aut repudiandae et a id nisi.
+          <h1 className="lg:text-8xl font-bold mb-6 sm:text-4xl">Diet & Mealplanning</h1>
+          <p className="text-3xl font-semibold">
+            We have designed this website with the 
+            intent of helping people achieve their
+            diet goals and create weekly meal plans.
           </p>
-          <button className="btn btn-primary">Get Started</button>
+          
         </div>
 
         {/* Placeholder for right-side component */}
-        <div className="bg-white p-6 rounded shadow-lg max-w-md w-full">
-          {/* Replace this with your component */}
+        <div className="bg-white-opacity-60 p-6 rounded shadow-lg max-w-2xl  w-full">
+          <HeroDiet />
           <p className="text-black"></p>
         </div>
       </div>

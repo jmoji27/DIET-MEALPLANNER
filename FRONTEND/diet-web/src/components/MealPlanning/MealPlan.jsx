@@ -3,17 +3,19 @@ import React, { useState } from 'react';
 const dietPlans = {
   Keto: ['Bacon & eggs', 'Avocado salad', 'Grilled salmon', 'Cheese omelette', 'Chicken thighs', 'Zucchini noodles', 'Almond pancakes'],
   Vegan: ['Smoothie bowl', 'Lentil salad', 'Tofu stir-fry', 'Chickpea curry', 'Quinoa bowl', 'Hummus wrap', 'Vegan burger'],
-  Mediterranean: ['Greek yogurt', 'Hummus & veggies', 'Grilled fish', 'Tomato pasta', 'Olive salad', 'Stuffed peppers', 'Feta omelette'],
+  GlutenFree: ['Greek yogurt', 'Hummus & veggies', 'Grilled fish', 'Tomato pasta', 'Olive salad', 'Stuffed peppers', 'Feta omelette'],
   Paleo: ['Egg muffins', 'Chicken salad', 'Beef stir-fry', 'Sweet potato hash', 'Tuna lettuce wraps', 'Fruit bowl', 'Zoodle bowl'],
-//   Low-Carb: ['Scrambled eggs', 'Caesar salad', 'Grilled chicken', 'Eggplant lasagna', 'Turkey roll-ups', 'Broccoli soup', 'Cauliflower rice'],
+  Vegetarian: ['Scrambled eggs with cheese', 'Potatoes with cheese', 'Mozarella and Tomato Sandwich'],
+  LowCarb: ['Scrambled eggs', 'Caesar salad', 'Grilled chicken', 'Eggplant lasagna', 'Turkey roll-ups', 'Broccoli soup', 'Cauliflower rice']
 };
 
 const MealPlan = () => {
   const [selectedDiet, setSelectedDiet] = useState('Keto');
 
   return (
-    <div style={styles.container}>
-      <h1 style={styles.heading}>Meal Planning</h1>
+    <div id="mealplanning"
+    style={styles.container}>
+      <h1 className="font-bold text-8xl text-white text-center">Meal Planning</h1>
       
       <select
         value={selectedDiet}
